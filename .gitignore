@@ -1,3 +1,4 @@
 !.gitignote
 /node_modules
+.nuxt
 yarn.lock
