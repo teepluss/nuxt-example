@@ -53,10 +53,25 @@ The `fetch` method receives the context as the first argument, we can use it to 
 For example:
 ```js
 export default {
-  fetch ({ store, params }) {
-    return axios.get('http://my-url')
-    .then((res) => {
-      store.commit('setUser', res.data)
+  fetch ({ store }) {
+    let promises = [
+      new Promise((resolve) => {
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+          .then((resp) => {
+            resolve(resp.data)
+          })
+      }),
+      new Promise((resolve) => {
+        axios.get('https://jsonplaceholder.typicode.com/users')
+          .then((resp) => {
+            resolve(resp.data)
+          })
+      })
+    ]
+
+    return Promise.all(promises).then((resp) => {
+      store.commit('recievePosts', resp[0])
+      store.commit('recieveUsers', resp[1])
     })
   }
 }
