@@ -2,7 +2,10 @@
   "name": "nuxt-vuex-store",
   "dependencies": {
     "axios": "^0.15.3",
-    "nuxt": "latest"
+    "bulma": "^0.2.3",
+    "node-sass": "^3.13.0",
+    "nuxt": "latest",
+    "sass-loader": "^4.0.2"
   },
   "scripts": {
     "dev": "nuxt",

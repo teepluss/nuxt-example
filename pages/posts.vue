@@ -1,5 +1,9 @@
 <template>
   <div id="posts">
+    <h1>Posts</h1>
+    <router-link to="/">Home</router-link>
+    <router-link to="/about">About</router-link>
+    <router-link to="/posts">Posts</router-link>
     <ul>
       <li v-for="gist in gists">{{ gist.id }}</li>
     </ul>
@@ -12,7 +16,10 @@
 import axios from 'axios'
 
 export default {
-	name: 'posts',
+	name: 'Posts',
+  head: {
+    title: 'Posts'
+  },
   fetch ({ store }) {
     let promises = [
       new Promise((resolve) => {
@@ -35,8 +42,8 @@ export default {
     })
   },
   mounted () {
-    this.$store.dispatch('getPosts')
-    this.$store.dispatch('getUsers')
+    // this.$store.dispatch('getPosts')
+    // this.$store.dispatch('getUsers')
   },
   computed: {
     gists () {
